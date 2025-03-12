@@ -25,8 +25,8 @@ mail = Mail(app)
 
 # File Paths
 csv_path = './data/DrugData_final.csv'
-model_path = './models/gbm_drug_recommendation_model.pkl'
-encoder_path = './models/label_encoder(2).pkl'
+model_path = './gbm_drug_recommendation_model.pkl'
+encoder_path = './label_encoder(2).pkl'
 
 # Load Model and Data
 try:
