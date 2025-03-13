@@ -35,6 +35,7 @@ try:
     drug_data = pd.read_csv(csv_path, encoding='latin-1')
 except Exception as e:
     print("Error loading model or data:", e)
+    raise
 
 # User Model
 class User(db.Model):
@@ -182,6 +183,10 @@ def recommend():
     except Exception as e:
         flash(f"Error in recommendation: {str(e)}", "danger")
         return redirect(url_for('dashboard'))
+
+@app.route('/check-model')
+def check_model():
+    return f"Model type: {type(model).__name__}, Encoder type: {type(label_encoder).__name__}"
 
 @app.route('/logout')
 def logout():
