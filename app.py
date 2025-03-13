@@ -36,7 +36,6 @@ try:
     drug_data = pd.read_csv(csv_path, encoding='latin-1')
 except Exception as e:
     print("Error loading model or data:", e)
-    raise
 
 # User Model
 class User(db.Model):
@@ -194,8 +193,6 @@ def logout():
     session.pop('user_id', None)
     flash("You have been logged out.", "info")
     return redirect(url_for('login'))
-
-
 
 files = {
     '16rCpiE5gX4TzgrQ2gnNG5wkHnJfToRBC': 'gbm_drug_recommendation_model.pkl',
