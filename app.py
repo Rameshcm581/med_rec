@@ -7,7 +7,6 @@ import pandas as pd
 import numpy as np
 import os
 from dotenv import load_dotenv
-from flask_session import Session 
 app = Flask(__name__)
 app.secret_key = 'noglioma'
 load_dotenv()
@@ -17,7 +16,6 @@ db = SQLAlchemy(app)
 
 
 # Mail Configuration
-app.config['SESSION_TYPE'] = 'filesystem'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True  # Fixed typo
