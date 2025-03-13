@@ -8,7 +8,7 @@ import numpy as np
 import os
 from dotenv import load_dotenv
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = 'noglioma'
 load_dotenv()
 # Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:npg_9P1ocOmQjfTZ@ep-red-unit-a1hj0zl3.ap-southeast-1.aws.neon.tech/medical_recommend?sslmode=require'
