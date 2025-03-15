@@ -5,7 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import joblib
 import pandas as pd
 import numpy as np
-import gdown
 import os
 from dotenv import load_dotenv
 app = Flask(__name__)
