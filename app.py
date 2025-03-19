@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'noglioma'
 # Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:npg_9P1ocOmQjfTZ@ep-red-unit-a1hj0zl3.ap-southeast-1.aws.neon.tech/medical_recommend?sslmode=require'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://med_rec_user_owner:npg_10QJyefdAcOW@ep-wispy-dream-a1q7kwgo-pooler.ap-southeast-1.aws.neon.tech/med_rec_user?sslmode=require'
 db = SQLAlchemy(app)
 
 
