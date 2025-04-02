@@ -161,11 +161,13 @@ def recommend():
         predicted_label = model.predict(input_data)
         recommended_drug = label_encoder.inverse_transform(predicted_label)[0]
 
-        if recommended_drug not in drug_data['Drug Name'].values:
+        drug_info = drug_data[drug_data['Drug Name'].str.strip().str.lower() == recommended_drug.strip().lower()]
+        
+        if drug_info.empty:
             flash("No suitable drug found.", "warning")
             return redirect(url_for('dashboard'))
 
-        drug_info = drug_data[drug_data['Drug Name'] == recommended_drug].iloc[0]
+        drug_info = drug_info.iloc[0]
 
         if age_group not in drug_info:
             flash("Age group not found in dataset.", "danger")
@@ -173,11 +175,16 @@ def recommend():
 
         dosage = drug_info[age_group]
         alternatives = [drug_info.get('Alternative 1', 'None'), drug_info.get('Alternative 2', 'None')]
+        
+        side_effects = drug_info.get('Side Effects', 'No side effects information available')
 
         return render_template('recommendation.html', 
-                               drug=recommended_drug,
-                               dosage=dosage,
-                               alternatives=alternatives)
+                           drug=recommended_drug,
+                           dosage=dosage,
+                           alternatives=alternatives,
+                           side_effects=side_effects,
+                           route=drug_info.get('Route of Administration', 'N/A'),
+                           contraindications=drug_info.get('Contraindications', 'N/A'))
     except Exception as e:
         flash(f"Error in recommendation: {str(e)}", "danger")
         return redirect(url_for('dashboard'))
